@@ -1,27 +1,27 @@
 {
-  "name": "GeoJSON Map Visualization Package",
+  "name": "GeoJSON Map",
   "organization": "Baljeet Labs",
-  "description": "A Looker Studio community visualization for displaying and analyzing GeoJSON shapes on a map.",
+  "description": "A Looker Studio community visualization to render GeoJSON shapes and polygons on maps.",
   "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
   "organizationUrl": "https://github.com/baljeets22/geojson-maps",
   "supportUrl": "https://github.com/baljeets22/geojson-maps/issues",
   "privacyPolicyUrl": "https://github.com/baljeets22/geojson-maps",
   "termsOfServiceUrl": "https://github.com/baljeets22/geojson-maps",
-  "packageUrl": "https://baljeets22.github.io/geojson-maps/",
-  "devMode": false,
+  "data": {
+    "visualizationType": "LOCAL"
+  },
   "components": [
     {
       "id": "geojson-map",
       "name": "GeoJSON Map",
-      "description": "Render custom GeoJSON boundaries or polygons with Looker Studio data fields.",
+      "description": "Displays GeoJSON boundaries, polygons, and regions in Looker Studio reports.",
       "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
-      "infoUrl": "https://github.com/baljeets22/geojson-maps",
-      "resource": {
-        "js": "https://baljeets22.github.io/geojson-maps/visualization.js",
-        "css": "https://baljeets22.github.io/geojson-maps/style.css",
-        "config": "https://baljeets22.github.io/geojson-maps/viz-config.json",
-        "html": "https://baljeets22.github.io/geojson-maps/index.html"
-      }
+      "js": "visualization.js",
+      "css": "style.css",
+      "useCustomConfig": false
     }
-  ]
+  ],
+  "resources": {
+    "indexHtml": "index.html"
+  }
 }
