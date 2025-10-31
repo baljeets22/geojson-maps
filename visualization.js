@@ -1,11 +1,11 @@
-// GeoJSON Map Visualization for Looker Studio
+
 const dscc = window.dscc || null;
 
-// 👉 Update this URL to your raw GitHub GeoJSON
+
 const GEOJSON_URL =
   "https://raw.githubusercontent.com/baljeets22/geojson-maps/main/MINIGEO.geojson";
 
-// Property used for color grouping
+
 const COLOR_PROPERTY = "DISPF"; // try "BRACKET" or "DISPF"
 
 async function drawViz(data) {
@@ -17,7 +17,7 @@ async function drawViz(data) {
   svg.selectAll("*").remove();
   const g = svg.append("g");
 
-  // Load GeoJSON data
+  
   let geojsonData;
   try {
     const response = await fetch(GEOJSON_URL);
