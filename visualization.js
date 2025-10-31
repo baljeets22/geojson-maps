@@ -1,10 +1,14 @@
 // GeoJSON Map Visualization for Looker Studio
 const dscc = window.dscc || null;
 
+// 👉 Update this URL to your raw GitHub GeoJSON
 const GEOJSON_URL =
   "https://raw.githubusercontent.com/baljeets22/geojson-maps/main/MINIGEO.geojson";
 
-const drawViz = async (data) => {
+// Property used for color grouping
+const COLOR_PROPERTY = "DISPF"; // try "BRACKET" or "DISPF"
+
+async function drawViz(data) {
   const container = document.getElementById("geojsonMap");
   const width = container.clientWidth;
   const height = container.clientHeight;
@@ -13,7 +17,7 @@ const drawViz = async (data) => {
   svg.selectAll("*").remove();
   const g = svg.append("g");
 
-  // Load your GeoJSON from GitHub
+  // Load GeoJSON data
   let geojsonData;
   try {
     const response = await fetch(GEOJSON_URL);
@@ -29,9 +33,30 @@ const drawViz = async (data) => {
     return;
   }
 
-  // Create projection and path
+  // Define projection and path
   const projection = d3.geoMercator().fitSize([width, height], geojsonData);
   const path = d3.geoPath().projection(projection);
+
+  // Extract unique property values for color scale
+  const values = Array.from(
+    new Set(geojsonData.features.map(f => f.properties?.[COLOR_PROPERTY]))
+  ).filter(Boolean);
+
+  // Create color scale
+  const color = d3.scaleOrdinal()
+    .domain(values)
+    .range(d3.schemeCategory10.concat(d3.schemeSet3)); // more colors
+
+  // Tooltip
+  const tooltip = d3.select("body").append("div")
+    .attr("class", "geo-tooltip")
+    .style("position", "absolute")
+    .style("padding", "6px 10px")
+    .style("background", "rgba(0,0,0,0.7)")
+    .style("color", "#fff")
+    .style("border-radius", "6px")
+    .style("font-size", "12px")
+    .style("visibility", "hidden");
 
   // Draw polygons
   g.selectAll("path")
@@ -39,27 +64,40 @@ const drawViz = async (data) => {
     .enter()
     .append("path")
     .attr("d", path)
-    .attr("fill", "#4e79a7")
-    .attr("stroke", "#222")
+    .attr("fill", d => color(d.properties?.[COLOR_PROPERTY]))
+    .attr("stroke", "#333")
     .attr("stroke-width", 0.4)
-    .append("title")
-    .text((d) => d.properties?.NAME || "Region");
+    .on("mouseover", function (event, d) {
+      d3.select(this).attr("fill", "#ffcc00");
+      tooltip.style("visibility", "visible").html(`
+        <b>${d.properties?.NAME || "Region"}</b><br>
+        ${COLOR_PROPERTY}: ${d.properties?.[COLOR_PROPERTY] || "N/A"}
+      `);
+    })
+    .on("mousemove", function (event) {
+      tooltip.style("top", `${event.pageY - 40}px`).style("left", `${event.pageX + 10}px`);
+    })
+    .on("mouseout", function (event, d) {
+      d3.select(this).attr("fill", color(d.properties?.[COLOR_PROPERTY]));
+      tooltip.style("visibility", "hidden");
+    });
 
-  // Add title text
+  // Add title
   g.append("text")
     .attr("x", 10)
     .attr("y", 20)
-    .text("GeoJSON Map View")
-    .style("font-size", "14px");
-};
+    .text(`GeoJSON Map by ${COLOR_PROPERTY}`)
+    .style("font-size", "14px")
+    .style("font-weight", "bold")
+    .attr("fill", "#222");
+}
 
-// Subscribe in Looker Studio
+// Run visualization
 if (dscc) {
   dscc.subscribeToData(drawViz, { transform: dscc.objectTransform });
 } else {
-  console.log("Running in local debug mode…");
+  console.log("Running locally...");
   drawViz({});
 }
 
-// Redraw on resize
 window.addEventListener("resize", () => drawViz({}));
