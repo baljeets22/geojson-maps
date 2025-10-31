@@ -3,7 +3,7 @@
   "organization": "TechOrg",
   "description": "A simple Looker Studio community visualization for displaying GeoJSON shapes.",
   "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
-  "supportUrl": "https://github.com/baljeets22/geojson-maps/blob/main/MINIGEO.geojson",
+  "supportUrl": "https://github.com/baljeets22/geojson-maps",
   "data": {
     "visualizationType": "LOCAL"
   },
