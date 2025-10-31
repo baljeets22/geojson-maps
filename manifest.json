@@ -1,0 +1,20 @@
+{
+  "name": "GeoJSON Map",
+  "organization": "TechOrg",
+  "description": "A simple Looker Studio community visualization for displaying GeoJSON shapes.",
+  "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
+  "supportUrl": "https://github.com/baljeets22/geojson-maps/blob/main/MINIGEO.geojson",
+  "data": {
+    "visualizationType": "LOCAL"
+  },
+  "components": [
+    {
+      "id": "geojson-map",
+      "js": "visualization.js",
+      "css": "style.css"
+    }
+  ],
+  "resources": {
+    "indexHtml": "index.html"
+  }
+}
