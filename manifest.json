@@ -1,10 +1,11 @@
 {
   "name": "GeoJSON Map",
-  "organization": "TechOrg",
-  "description": "A simple Looker Studio community visualization for displaying GeoJSON shapes.",
+  "organization": "Baljeet Labs",
+  "description": "A Looker Studio Community Visualization to render GeoJSON boundaries and polygons.",
   "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
-  "supportUrl": "https://github.com/baljeets22/geojson-maps",
-  "version": "1.0.0",
+  "supportUrl": "https://github.com/baljeets22/geojson-maps/",
+  "privacyPolicyUrl": "https://github.com/baljeets22/geojson-maps",
+  "termsOfServiceUrl": "https://github.com/baljeets22/geojson-maps",
   "data": {
     "visualizationType": "LOCAL"
   },
@@ -17,5 +18,5 @@
   ],
   "resources": {
     "indexHtml": "index.html"
-  } 
+  }
 }
