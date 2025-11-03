@@ -9,9 +9,6 @@
   "privacyPolicyUrl": "https://github.com/baljeets22/geojson-maps",
   "description": "A Looker Studio community visualization to render GeoJSON shapes and polygons on maps."
   "devMode": true,
-  "data": {
-    "visualizationType": "LOCAL"
-  },
   "components": [
     {
       "id": "geojson-map",
