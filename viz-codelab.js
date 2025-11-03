@@ -86,7 +86,6 @@ async function drawViz(data) {
   g.append("text")
     .attr("x", 10)
     .attr("y", 20)
-    .text(`GeoJSON Map by ${COLOR_PROPERTY}`)
     .style("font-size", "14px")
     .style("font-weight", "bold")
     .attr("fill", "#222");
