@@ -16,8 +16,8 @@
       "name": "GeoJSON Map",
       "description": "Displays GeoJSON boundaries, polygons, and regions in Looker Studio reports.",
       "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Globe_icon.svg",
-      "js": "visualization.js",
-      "css": "style.css",
+      "js": "viz-codelab.js",
+      "css": "viz-codelab.css",
       "useCustomConfig": false
     }
   ],
