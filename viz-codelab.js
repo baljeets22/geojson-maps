@@ -41,7 +41,7 @@ var _=R(/*! ./types */"./src/types.ts");!function(e){for(var R in e)N.hasOwnProp
 }
 
 // Subscribe to data and style changes. Use the table format for data.
-dscc.subscribeToData(drawViz, { transform: dscc.tableTransform });ECHO is on.
+dscc.subscribeToData(drawViz, { transform: dscc.tableTransform });
 function drawViz(data) {
 
   // Container setup.
@@ -78,4 +78,5 @@ dscc.subscribeToData(drawViz, { transform: dscc.tableTransform });function drawV
 }
 
 // Subscribe to data and style changes. Use the table format for data.
+
 dscc.subscribeToData(drawViz, { transform: dscc.tableTransform });
