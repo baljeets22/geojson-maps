@@ -6,7 +6,7 @@ const GEOJSON_URL =
   "https://raw.githubusercontent.com/baljeets22/geojson-maps/main/MINIGEO.geojson";
 
 
-const COLOR_PROPERTY = "NAMELSADCO";
+const COLOR_PROPERTY = "DISPN";
 const TOOLTIP_PROPERTY = "GEOID";
 
 async function drawViz(data) {
@@ -46,7 +46,7 @@ async function drawViz(data) {
   // Create color scale
   const color = d3.scaleOrdinal()
     .domain(values)
-    .range(d3.schemeCategory10.concat(d3.schemeSet3)); // more colors
+    .range(["#0084ffff", "#aaff00ff", "#ff0040ff"]); // more colors
 
   // Tooltip
   const tooltip = d3.select("body").append("div")
@@ -72,7 +72,8 @@ async function drawViz(data) {
       d3.select(this).attr("fill", "#ffcc00");
       tooltip.style("visibility", "visible").html(`
         <b>${d.properties?.NAME || "Region"}</b><br>
-        ${TOOLTIP_PROPERTY}: ${d.properties?.[TOOLTIP_PROPERTY] || "N/A"}
+        ${TOOLTIP_PROPERTY}: ${d.properties?.[TOOLTIP_PROPERTY] || "N/A"}<br>
+        STATE_NAME: ${d.properties?.['STATE_NAME'] || "N/A"}
       `);
     })
     .on("mousemove", function (event) {
