@@ -71,7 +71,7 @@ async function drawViz(data) {
     .on("mouseover", function (event, d) {
       d3.select(this).attr("fill", "#ffcc00");
       tooltip.style("visibility", "visible").html(`
-        <b>${d.properties?.NAME || "Region"}</b><br>
+        <b>${d.properties?.BRACKET || "Region"}</b><br>
         ${TOOLTIP_PROPERTY}: ${d.properties?.[TOOLTIP_PROPERTY] || "N/A"}<br>
         STATE_NAME: ${d.properties?.['STATE_NAME'] || "N/A"}
       `);
