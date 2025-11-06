@@ -6,7 +6,8 @@ const GEOJSON_URL =
   "https://raw.githubusercontent.com/baljeets22/geojson-maps/main/MINIGEO.geojson";
 
 
-const COLOR_PROPERTY = "DISPF"; // try "BRACKET" or "DISPF"
+const COLOR_PROPERTY = "NAMELSADCO";
+const TOOLTIP_PROPERTY = "GEOID";
 
 async function drawViz(data) {
   const container = document.getElementById("geojsonMap");
@@ -71,7 +72,7 @@ async function drawViz(data) {
       d3.select(this).attr("fill", "#ffcc00");
       tooltip.style("visibility", "visible").html(`
         <b>${d.properties?.NAME || "Region"}</b><br>
-        ${COLOR_PROPERTY}: ${d.properties?.[COLOR_PROPERTY] || "N/A"}
+        ${TOOLTIP_PROPERTY}: ${d.properties?.[TOOLTIP_PROPERTY] || "N/A"}
       `);
     })
     .on("mousemove", function (event) {
